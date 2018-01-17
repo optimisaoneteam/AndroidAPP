@@ -9,13 +9,16 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button buttonv1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //instancia al boton que esta en main, llamando a su id asociado
         buttonv1 = (Button)findViewById(R.id.goView1);
-
+        // insancia boton   y enlazandolo con ID
+        Button boton =  (Button)findViewById(R.id.GoToVista2);
         buttonv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,5 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),Main2Activity.class);
+            startActivityForResult(intent,0);
+
+            }
+
+        });
+
     }
 }
