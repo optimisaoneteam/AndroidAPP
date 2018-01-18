@@ -10,8 +10,8 @@
     <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="551dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="83dp">
 
         <Button
             android:id="@+id/button4"
@@ -22,18 +22,64 @@
             android:layout_marginBottom="73dp"
             android:layout_marginEnd="57dp"
             android:onClick="botonE"
-            android:text="Recupera_info" />
+            android:text="Insertar" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/editText4"
+            android:layout_marginTop="23dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nombre" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="Pasword" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/editText3"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="58dp"
+            android:text="IP:" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="39dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="number"
+            android:text="Rut"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button4"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginBottom="10dp"
+            android:onClick="BotonIP"
+            android:text="IP Publica" />
+
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
 
 

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 
@@ -27,8 +28,13 @@ import java.sql.Statement;
 
 
 public class Main2Activity extends AppCompatActivity {
-
+    EditText NOM;
+    EditText RU;
+    EditText CLa;
     TextView text;
+    String Nombre;
+    String Rut;
+    String Clave;
     HttpURLConnection httpURLConnection;
 
     @Override
@@ -48,7 +54,8 @@ public class Main2Activity extends AppCompatActivity {
 
                 Connection conn = DriverManager.getConnection( "jdbc:postgresql://10.10.7.104:5433/REGISTRO","postgres", "admin");
 
-                String stsql = "Select version()";
+                //String stsql = "INSERT INTO personas(\"rut \" = 182903424,\" nombre\" = \"juanito\",\"contraseña\" = \"18293405\");
+                String stsql = "INSERT INTO public.personas(\"rut \",nombre,contraseña) VALUES ('"+Rut+"','"+Nombre+"','"+Clave+"')";
                 Statement st = conn.createStatement();
                 ResultSet rs = st.executeQuery(stsql);
                 rs.next();
@@ -65,13 +72,25 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
+    public void BotonIP(View v){
+        text = (TextView) findViewById(R.id.textView3);
+        new internet().execute("https://api.ipify.org/");
 
+    }
 
     public void botonE(View v) {
-        text = (TextView) findViewById(R.id.textView3);
+
+        NOM = (EditText) findViewById(R.id.editText);
+        CLa = (EditText) findViewById(R.id.editText3);
+        RU = (EditText) findViewById(R.id.editText4);
+        Nombre = NOM.getText().toString();
+        Clave = CLa.getText().toString();
+        Rut= RU.getText().toString();
+        System.out.println(Nombre);
+
         new SQL().execute();
 
-       /// new internet().execute("https://api.ipify.org/");
+
 
     }
 
