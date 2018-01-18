@@ -16,6 +16,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+
+
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -29,10 +38,40 @@ public class Main2Activity extends AppCompatActivity {
 
 
     }
+    public class SQL extends AsyncTask<String,String,String>{
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+
+                Class.forName("org.postgresql.Driver");
+                System.out.println("Conectando to data base..");
+
+                Connection conn = DriverManager.getConnection( "jdbc:postgresql://10.10.7.104:5433/REGISTRO","postgres", "admin");
+
+                String stsql = "Select version()";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(stsql);
+                rs.next();
+                System.out.println(rs.getString(1) );
+                conn.close();
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+         return null;
+        }
+
+    }
+
+
 
     public void botonE(View v) {
         text = (TextView) findViewById(R.id.textView3);
-        new internet().execute("https://api.ipify.org/");
+        new SQL().execute();
+
+       /// new internet().execute("https://api.ipify.org/");
 
     }
 
